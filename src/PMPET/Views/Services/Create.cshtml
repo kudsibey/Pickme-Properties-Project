@@ -1,0 +1,90 @@
+@model PMPET.Models.Service
+
+
+
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Add New Service</h4><img src="~/images/services.jpg" height="75" width="75" />
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ServiceType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ServiceType" class="form-control" asp-items="ViewBag.ServiceTypes"></select>
+                <span asp-validation-for="ServiceType" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FeeType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="FeeType" class="form-control" asp-items="ViewBag.FeeTypes"></select>
+                <span asp-validation-for="FeeType" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="RentCommision" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="RentCommision" class="form-control qty" />
+                <span asp-validation-for="RentCommision" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SaleCommission" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SaleCommission" class="form-control qty" />
+                <span asp-validation-for="SaleCommission" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FixedLetFee" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FixedLetFee" class="form-control crncy" />
+                <span asp-validation-for="FixedLetFee" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FixedSaleFee" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FixedSaleFee" class="form-control crncy" />
+                <span asp-validation-for="FixedSaleFee" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartDate" class="form-control dte" />
+                <span asp-validation-for="StartDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EndDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EndDate" class="form-control dte" />
+                <span asp-validation-for="EndDate" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

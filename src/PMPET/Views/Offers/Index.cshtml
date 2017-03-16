@@ -1,0 +1,68 @@
+@model IEnumerable<PMPET.Models.Offer>
+
+@{
+    ViewData["Title"] = "Offers Index";
+}
+
+<h2>Offers List</h2>
+
+<div class="row" style="height:100px;">
+    <div class="col-md-2">
+        <img src="~/images/offers.png" height="75" width="75" />
+        <img src="~/images/infoicon.ico" height="25" width="25" onclick="displayHelpInfo('Offers');" />
+    </div>
+    <div class="col-md-7" id="infoPanelContainer">
+        <span style="width:100px; height:100px; visibility:hidden;" id="infoPanel" onclick="displayHelpInfo('Offers');"></span>
+    </div>
+</div><br/>
+    <a asp-action="Create">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RealEstate.AddressLine1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfferType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RealEstate.AddressLine1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Person.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfferAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfferDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfferType)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

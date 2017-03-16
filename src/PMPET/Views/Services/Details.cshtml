@@ -1,0 +1,72 @@
+@model PMPET.Models.Service
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4>Service- Details</h4><h4>Service- Create</h4><img src="~/images/services.jpg" height="75" width="75" />
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FeeType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FeeType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentCommision)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentCommision)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleCommission)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SaleCommission)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FixedLetFee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FixedLetFee)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FixedSaleFee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FixedSaleFee)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

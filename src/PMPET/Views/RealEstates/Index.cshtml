@@ -1,0 +1,84 @@
+@model IEnumerable<PMPET.Models.RealEstate>
+
+@{
+    ViewData["Title"] = "Properties Index";
+}
+
+<h2>Properties List</h2>
+<div class="row" style="height:100px;">
+    <div class="col-md-2">
+        <img src="~/images/house.png" height="75" width="75" />
+        <img src="~/images/infoicon.ico" height="25" width="25" onclick="displayHelpInfo('Property');" />
+    </div>
+    <div class="col-md-7" id="infoPanelContainer">
+        <span style="width:100px; height:100px; visibility:hidden;" id="infoPanel" onclick="displayHelpInfo('Property');"></span>
+    </div>
+</div><br/>
+    <p>
+        <a asp-action="Create">Add New</a>
+    </p>
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by adress: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to List</a>
+            </p>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressLine1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressLine2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Town)
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.PostCodeSortParm">@Html.DisplayNameFor(model => model.PostCode)</a>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RentalPrice)
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.SalePriceSortParm">@Html.DisplayNameFor(model => model.SalePrice)</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressLine1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressLine2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Town)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RentalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalePrice)
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

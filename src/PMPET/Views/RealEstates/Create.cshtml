@@ -1,0 +1,132 @@
+@model PMPET.Models.RealEstate
+
+
+
+
+
+<form asp-action="Create">
+    <div class="form-vertical">
+        <h4>Add New Property</h4><img src="~/images/house.png" height="75" width="75" />
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="AddressLine1" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AddressLine1" class="form-control" />
+                <span asp-validation-for="AddressLine1" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AddressLine2" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AddressLine2" class="form-control" />
+                <span asp-validation-for="AddressLine2" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Town" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Town" class="form-control" />
+                <span asp-validation-for="Town" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PostCode" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PostCode" class="form-control pstcde" />
+                <span asp-validation-for="PostCode" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PropertyType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="PropertyType" class="form-control" />
+                <span asp-validation-for="PropertyType" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="BedroomQty" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BedroomQty" class="form-control qty" />
+                <span asp-validation-for="BedroomQty" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="BathroomWCQty" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BathroomWCQty" class="form-control qty" />
+                <span asp-validation-for="BathroomWCQty" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="BathroomQty" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BathroomQty" class="form-control qty" />
+                <span asp-validation-for="BathroomQty" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FrontGarden" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FrontGarden" class="form-control leftAlign" />
+                <span asp-validation-for="FrontGarden" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="BackGarden" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BackGarden" class="form-control leftAlign" />
+                <span asp-validation-for="BackGarden" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GenDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="GenDescription" style="width:100%; height:100px;" class="form-control"></textarea><br/>
+                <span asp-validation-for="GenDescription" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PersonID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="PersonID" class="form-control" asp-items="ViewBag.PersonID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ServiceID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ServiceID" class="form-control" asp-items="ViewBag.ServiceID"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="RentalPrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="RentalPrice" class="form-control crncy" />
+                <span asp-validation-for="RentalPrice" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SalePrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SalePrice" class="form-control crncy" />
+                <span asp-validation-for="SalePrice" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <br/>
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

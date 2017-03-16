@@ -1,0 +1,67 @@
+@model PMPET.Models.Viewing
+
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Add New Viewing</h4><img src="~/images/viewing.jpg" height="75" width="75" />
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="PersonID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="PersonID" class="form-control" asp-items="ViewBag.Members"></select>
+                <span asp-validation-for="PersonID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="RealEstateID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="RealEstateID" class="form-control" asp-items="ViewBag.RealEstateIDs"></select>
+                <span asp-validation-for="RealEstateID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ViewDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ViewDate" class="form-control dte" />
+                <span asp-validation-for="ViewDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ViewTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ViewTime" class="form-control tme" />
+                <span asp-validation-for="ViewTime" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ViewingType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ViewingType" class="form-control" asp-items="ViewBag.ViewingTypes"></select>
+                <span asp-validation-for="ViewingType" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Notes" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="Notes" class="form-control" style="height:200px;"> </textarea>
+                <span asp-validation-for="Notes" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

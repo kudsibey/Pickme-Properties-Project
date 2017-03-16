@@ -1,0 +1,70 @@
+@model PMPET.Models.Viewing
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Are you sure you want to delete this viewing?</h3>
+<div>
+    <h4>Viewings - Delete</h4><img src="~/images/viewing.jpg" height="75" width="75" />
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PersonID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Person.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Person.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RealEstateID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RealEstateID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RealEstate.AddressLine1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RealEstate.AddressLine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ViewDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ViewTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ViewingType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ViewingType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
