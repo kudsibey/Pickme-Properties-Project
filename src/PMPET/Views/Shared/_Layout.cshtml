@@ -19,7 +19,7 @@
         <link rel="icon" href="~/favicon.ico" type="image/ico">
     </environment>
 </head>
-<body>
+<body style="background-color:whitesmoke">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -33,22 +33,24 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                   
                     <li><a asp-area="" style="color:white" asp-controller="RealEstates" asp-action="Index">Properties</a></li>
                     <li><a asp-area="" style="color:white" asp-controller="People" asp-action="Index">Members</a></li>
                     <li><a asp-area="" style="color:white" asp-controller="Viewings" asp-action="Index">Viewings</a></li>
                     <li><a asp-area="" style="color:white" asp-controller="Services" asp-action="Index">Services</a></li>
                     <li><a asp-area="" style="color:white" asp-controller="Offers" asp-action="Index">Offers</a></li>
+                    @*<li><a asp-area="" style="color:white" asp-controller="OurUtils" asp-action="UploadPics">Upload Pictures</a></li>*@
                     <li><a asp-area="" style="color:white" asp-controller="Home" asp-action="About">User's Guide</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content" style="background: aqua;">
+    <div style="background-color:whitesmoke;padding:50px 150px 50px 150px;">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - Kudsi Tuluoglu - ASP.NET C# Developer</p>
+            <p style="text-align:center">&copy; 2016 - Kudsi Tuluoglu - ASP.NET C# Developer</p>
         </footer>
     </div>
 

@@ -96,8 +96,7 @@ namespace PMPET.Controllers
         }
 
         // POST: People/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,AddressLine1,AddressLine2,FirstMidName,JoinDate,LastName,MemberType,PostCode,Town, TelephoneNo,MobileNo,EmailAddress,GeneralNotes")] Person person)
@@ -130,8 +129,7 @@ namespace PMPET.Controllers
         }
 
         // POST: People/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,AddressLine1,AddressLine2,FirstMidName,JoinDate,LastName,MemberType,PostCode,Town,TelephoneNo,MobileNo,EmailAddress,GeneralNotes")] Person person)

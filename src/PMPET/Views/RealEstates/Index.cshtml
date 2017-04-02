@@ -47,6 +47,9 @@
                 <th>
                     <a asp-action="Index" asp-route-sortOrder="@ViewBag.SalePriceSortParm">@Html.DisplayNameFor(model => model.SalePrice)</a>
                 </th>
+                <th>
+                    Photo:
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -72,11 +75,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.SalePrice)
                     </td>
+                    <td>
+                            <img src="@Url.Content(String.Format("{0}","uploads/"+(item.AddressLine1.Replace(" ","").ToUpper())+item.PostCode.Replace(" ","").ToUpper()+".JPG"))" height="65" width="65" />
+                    </td>
 
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> |
+                        <a style="color:blue" asp-controller="RealEstates" asp-action="UploadPics" asp-route-id="@item.ID" asp-route-filename="@Url.Content(String.Format("{0}",(item.AddressLine1.Replace(" ","").ToUpper())+item.PostCode.Replace(" ","").ToUpper()+".JPG"))">Upload Photo</a>
                     </td>
                 </tr>
             }

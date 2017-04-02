@@ -164,6 +164,9 @@
 
       </dl>
   </div>
+    <div class="col-md-6" style="padding-top:150px">
+        <img src="@Url.Content(String.Format("{0}","/uploads/"+(Model.AddressLine1.Replace(" ",""))+Model.PostCode.Trim().ToUpper()+".JPG"))" height="265" width="265" />
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |

@@ -1,0 +1,21 @@
+﻿<head>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+
+<h3 style="text-align:center">Upload Photo For the Property</h3>
+<body>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2"><img src="~/images/camera-pictogram.jpg" /></div>
+        <div class="col-md-2">
+            <form method="post" asp-action="UploadPics" asp-controller="RealEstates" enctype="multipart/form-data">
+                <label for="files" class="btn">Select Image</label><br/>
+                <input type="file" name="files" accept="image/*" /><br />
+                <input type="text" name="targetfilename" disabled  value="@ViewBag.CurrentPropAddress" /><br />
+                <input type="submit" value="Upload" /><br />
+            </form>
+            <a asp-action="Index">Back to Properties</a>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+</body>

@@ -47,13 +47,12 @@ namespace PMPET
         public IActionResult Create()
         {
             ViewData["ServiceTypes"] = new SelectList(new[] { "Sale", "Let", "Sale&Let"});
-            ViewData["FeeTypes"] = new SelectList(new[] { "Commision", "Fixed Fee"});
+            ViewData["FeeTypes"] = new SelectList(new[] { "Commission", "Fixed Fee"});
             return View();
         }
 
         // POST: Services/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,Description,RentCommision,SaleCommission,ServiceType,FeeType,FixedSaleFee,FixedLetFee,StartDate,EndDate")] Service service)
@@ -64,7 +63,7 @@ namespace PMPET
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewData["FeeTypes"] = new SelectList(new[] { "Commision", "Fixed Fee" });
+            ViewData["FeeTypes"] = new SelectList(new[] { "Commission", "Fixed Fee" });
             ViewData["ServiceTypes"] = new SelectList(new[] { "Sale", "Let", "Sale&Let" }); 
             return View(service);
         }
@@ -82,14 +81,13 @@ namespace PMPET
             {
                 return NotFound();
             }
-            ViewData["FeeTypes"] = new SelectList(new[] { "Commision", "Fixed Fee" });
+            ViewData["FeeTypes"] = new SelectList(new[] { "Commission", "Fixed Fee" });
             ViewData["ServiceTypes"] = new SelectList(new[] { "Sale", "Let", "Sale&Let" });
             return View(service);
         }
 
         // POST: Services/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ID,Description,RentCommision,SaleCommission,ServiceType,FeeType,FixedSaleFee,FixedLetFee,StartDate,EndDate")] Service service)
@@ -119,7 +117,7 @@ namespace PMPET
                 }
                 return RedirectToAction("Index");
             }
-            ViewData["FeeTypes"] = new SelectList(new[] { "Commision", "Fixed Fee" });
+            ViewData["FeeTypes"] = new SelectList(new[] { "Commission", "Fixed Fee" });
             ViewData["ServiceTypes"] = new SelectList(new[] { "Sale", "Let", "Sale&Let" });
             return View(service);
         }

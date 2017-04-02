@@ -1,0 +1,10 @@
+﻿
+<h2>Upload Pics</h2>
+
+<div class="row">
+    <form method="post" asp-action="UploadPics" asp-controller="OurUtils" enctype="multipart/form-data">
+        <input type="file" name="files"  accept="image/*"/>
+        <input type="text" name="targetfilename" value="@ViewBag.CurrentPropAddress"/>
+        <input type="submit" value="Upload" />
+    </form>
+</div>

@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using PMPET.Data;
 using PMPET.Models;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace PMPET.Controllers
 {
@@ -15,10 +18,57 @@ namespace PMPET.Controllers
     {
         private readonly PMPETContext _context;
 
-        public RealEstatesController(PMPETContext context)
+        //public RealEstatesController(PMPETContext context)
+        //{
+        //    _context = context;    
+        //}
+
+
+        private IHostingEnvironment _environment;
+
+        public RealEstatesController(IHostingEnvironment environment, PMPETContext context)
         {
-            _context = context;    
+            _environment = environment;
+            _context = context;
         }
+
+
+        public IActionResult UploadPics(string filename)
+        {
+            ViewBag.CurrentPropAddress = filename;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadPics(ICollection<IFormFile> files, string targetfilename)
+        {
+            if (targetfilename != null && files!=null )
+            {
+                var uploads = Path.Combine(_environment.WebRootPath, "uploads");
+                foreach (var file in files)
+                {
+                    if (file.Length > 0)
+                    {
+                        //                    using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                        using (var fileStream = new FileStream(Path.Combine(uploads, targetfilename.ToUpper().Replace(" ","")), FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+
+                    }
+
+                }
+            } else
+            {
+                
+                return View("Index",await _context.RealEstates.ToListAsync());
+            } 
+
+            return View(UploadPics(targetfilename));
+        }
+
+
+
 
         // GET: RealEstates
         public async Task<IActionResult> IndexBck()
@@ -78,6 +128,8 @@ namespace PMPET.Controllers
             return View(realEstate);
         }
 
+        
+
         // GET: RealEstates/Create
         public IActionResult Create()
         {
@@ -87,8 +139,7 @@ namespace PMPET.Controllers
         }
 
         // POST: RealEstates/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+   
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(
@@ -126,8 +177,7 @@ namespace PMPET.Controllers
         }
 
         // POST: RealEstates/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id,
